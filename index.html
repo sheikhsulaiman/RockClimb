@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Climb</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body class="container mx-auto bg-purple-100">
+    <h1
+      class="block text-center font-semibold shadow-sm border-b-2 border-purple-400"
+    >
+      Rock Climb Problem
+    </h1>
+    <div class="flex flex-col mx-auto sm:flex-row mt-2 gap-2 p-4">
+      <div class="mx-auto">
+        <div class="relative h-10 w-full">
+          <input
+            type="number"
+            min="0"
+            id="row"
+            class="peer h-full w-full rounded-[7px] border border-purple-400 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-purple-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-purple-400 placeholder-shown:border-t-purple-400 focus:border-2 focus:border-purple-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-purple-50"
+            placeholder=" "
+          />
+          <label
+            for="#row"
+            class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-purple-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-purple-400 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-purple-400 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-purple-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-purple-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-purple-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-purple-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-purple-500"
+          >
+            Row
+          </label>
+        </div>
+      </div>
+      <div class="mx-auto">
+        <div class="relative h-10 w-full min-w-[20px]">
+          <input
+            type="number"
+            min="0"
+            class="peer h-full w-full rounded-[7px] border border-purple-400 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-purple-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-purple-400 placeholder-shown:border-t-purple-400 focus:border-2 focus:border-purple-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-purple-50"
+            placeholder=" "
+            id="column"
+          />
+          <label
+            for="#column"
+            class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-purple-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-purple-400 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-purple-400 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-purple-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-purple-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-purple-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-purple-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-purple-500"
+          >
+            Column
+          </label>
+        </div>
+      </div>
+      <button
+        class="middle none center rounded-lg bg-purple-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-purple-900/20 transition-all hover:shadow-lg hover:shadow-purple-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        data-ripple-light="true"
+        id="generateBoard"
+      >
+        Generate Board
+      </button>
+    </div>
+
+    <div id="boardArea" class="flex items-center flex-col w-full">
+      <!-- <input
+          type="number"
+          min="1"
+          class="rounded-sm border border-purple-400 bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-purple-700 outline outline-1 focus:border-purple-500 focus:outline-0 disabled:border-0 disabled:bg-purple-50"
+        /> -->
+    </div>
+  </body>
+</html>
