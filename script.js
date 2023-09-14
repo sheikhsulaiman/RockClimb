@@ -22,7 +22,7 @@ gbtn.addEventListener("click", () => {
       if (i === row) {
         A[i][j] = 0;
       } else {
-        A[i][j] = Math.floor(Math.random() * 10);
+        A[i][j] = Math.floor(Math.random() * 8) + 2;
       }
     }
   }
@@ -39,15 +39,15 @@ gbtn.addEventListener("click", () => {
       input.id = `${i}${j}`;
       input.type = "number";
       input.min = "0";
-      input.value = y;
-      // input.value = `${i}${j}`;
+      // input.value = y;
+      input.value = `${i}${j}`;
       if (i === row) {
         input.disabled = true;
         input.className =
-          "w-14 h-14 text-center shrink rounded-sm border gap-1  border-slate-400 bg-transparent px-3 py-2.5 font-sans text-sm font-bold text-slate-700";
+          "w-20 h-20 text-center shrink rounded-sm border gap-1  border-slate-400 bg-transparent px-3 py-2.5 font-sans text-sm font-bold text-slate-700";
       } else {
         input.className =
-          "w-14 h-14 text-center shrink rounded-sm border gap-1  border-purple-400 bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-purple-700 outline outline-1";
+          "w-20 h-20 text-center shrink rounded-sm border gap-1  border-purple-400 bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-purple-700 outline outline-1";
       }
       //input.className =
       //"shrink w-6 rounded-sm border gap-1  border-purple-400 bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-purple-700 outline outline-1 focus:border-purple-500 focus:outline-0 disabled:border-0 disabled:bg-purple-50";
@@ -83,11 +83,19 @@ async function visualizer() {
       rightCell.classList.add("bg-pink-300");
       downCell.classList.add("bg-pink-300");
       await delay(1000);
+      let cellValue = parseInt(cell.value);
+      cellValue += findLowestNumber(
+        +leftCell.value,
+        +downCell.value,
+        +rightCell.value
+      );
+      cell.value = cellValue;
       leftCell.classList.remove("bg-pink-300");
-      // console.log(leftCell);
       rightCell.classList.remove("bg-pink-300");
       downCell.classList.remove("bg-pink-300");
       cell.classList.remove("bg-blue-300");
+      cell.classList.remove("text-sm");
+      cell.classList.add("text-xl");
     }
   }
 }
@@ -95,3 +103,13 @@ async function visualizer() {
 vbtn.addEventListener("click", () => {
   visualizer();
 });
+
+function findLowestNumber(num1, num2, num3) {
+  if (num1 <= num2 && num1 <= num3) {
+    return num1;
+  } else if (num2 <= num1 && num2 <= num3) {
+    return num2;
+  } else {
+    return num3;
+  }
+}
