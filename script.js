@@ -98,6 +98,9 @@ async function visualizer() {
       cell.classList.add("text-xl");
     }
   }
+  for (let i = 0; i < +rowInp.value; i++) {
+    for (let j = 0; i < +columnInp.value; j++) {}
+  }
 }
 
 vbtn.addEventListener("click", () => {
@@ -112,4 +115,21 @@ function findLowestNumber(num1, num2, num3) {
   } else {
     return num3;
   }
+}
+
+function findSmallestNumberIndex(arr) {
+  if (arr.length === 0) {
+    // Handle the case where the array is empty.
+    return undefined;
+  }
+
+  let smallest = arr[0]; // Assume the first element is the smallest.
+
+  for (var i = 1; i < arr.length; i++) {
+    if (arr[i] < smallest) {
+      smallest = arr[i]; // Update the smallest if we find a smaller number.
+    }
+  }
+
+  return i - 1;
 }
