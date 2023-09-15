@@ -3,10 +3,8 @@ const vbtn = document.getElementById("visualizeBoard");
 const rowInp = document.getElementById("row");
 const columnInp = document.getElementById("column");
 const boardArea = document.getElementById("boardArea");
-//const boardGrid = document.createElement("div");
 let I = [];
 let T = [];
-// boardGrid.className = "grid gap-1 mx-auto";
 gbtn.addEventListener("click", () => {
   while (boardArea.lastElementChild) {
     boardArea.removeChild(boardArea.lastElementChild);
@@ -28,8 +26,6 @@ gbtn.addEventListener("click", () => {
     }
   }
 
-  //console.log(A[0][1]);
-  //boardArea.className = `grid grid-cols-${+col} gap-1 `;
   A.forEach((x, i) => {
     const divRow = document.createElement("div");
     divRow.className = "flex shrink";
@@ -41,7 +37,6 @@ gbtn.addEventListener("click", () => {
       input.type = "number";
       input.min = "0";
       input.value = y;
-      // input.value = `${i}${j}`;
       if (i === row) {
         input.disabled = true;
         input.className =
@@ -50,8 +45,6 @@ gbtn.addEventListener("click", () => {
         input.className =
           "w-20 h-20 text-center shrink rounded-sm border gap-1  border-purple-400 bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-purple-700 outline outline-1";
       }
-      //input.className =
-      //"shrink w-6 rounded-sm border gap-1  border-purple-400 bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-purple-700 outline outline-1 focus:border-purple-500 focus:outline-0 disabled:border-0 disabled:bg-purple-50";
       divRow.appendChild(input);
     });
     boardArea.appendChild(divRow);
@@ -61,7 +54,6 @@ gbtn.addEventListener("click", () => {
 const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
 async function visualizer() {
-  //console.log(I[0][0]);
   for (let i = +rowInp.value - 1; i >= 0; i--) {
     for (let j = 0; j < +columnInp.value; j++) {
       const cell = I[i][j];
@@ -110,7 +102,6 @@ async function visualizer() {
 
     let fcell = I[i1++][j1];
     T.push(leftCell, downCell, rightCell);
-    // console.log(T);
     [i1, j1] = findSmallestnumberIndex([...T]);
     console.log(fcell);
     fcell.classList.add("bg-yellow-400");
@@ -122,9 +113,6 @@ vbtn.addEventListener("click", () => {
 });
 
 function findLowestnumber(num1, num2, num3) {
-  // console.log("num 1" + num1);
-  // console.log("num 2" + num2);
-  // console.log("num 3" + num3);
   if (num1 <= num2 && num1 <= num3) {
     return num1;
   } else if (num2 <= num1 && num2 <= num3) {
@@ -133,18 +121,6 @@ function findLowestnumber(num1, num2, num3) {
     return num3;
   }
 }
-// function findLowestnumberIndex(cell1, cell2, cell3) {
-//   // console.log("num 1" + num1);
-//   // console.log("num 2" + num2);
-//   // console.log("num 3" + num3);
-//   if (+cell1.value <= +cell2.value && +cell1.value <= +cell3.value) {
-//     return stringToArray(cell1.id);
-//   } else if (+cell2.value <= +cell1.value && +cell2.value <= +cell3.value) {
-//     return stringToArray(cell2.id);
-//   } else {
-//     return stringToArray(cell3.id);
-//   }
-// }
 
 function findSmallestnumberIndex(arr) {
   if (arr.length === 0) {
@@ -162,20 +138,6 @@ function findSmallestnumberIndex(arr) {
 
   return stringToArray(smallest.id);
 }
-
-// function findCell(target, cell1, cell2, cell3) {
-//   findLowestnumber(+cell1.value,+cell2.value,+cell3.value)
-
-//   if (target === +cell1.value) {
-//     return stringToArray(cell1.id);
-//   } else if (target === +cell2.value) {
-//     return stringToArray(cell2.id);
-//   } else if (target === +cell3.value) {
-//     return stringToArray(cell3.id);
-//   } else {
-//     return [0, 0];
-//   }
-// }
 
 function stringToArray(inputString) {
   const intArray = [];
