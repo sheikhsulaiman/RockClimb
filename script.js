@@ -5,6 +5,7 @@ const columnInp = document.getElementById("column");
 const boardArea = document.getElementById("boardArea");
 //const boardGrid = document.createElement("div");
 let I = [];
+let T = [];
 // boardGrid.className = "grid gap-1 mx-auto";
 gbtn.addEventListener("click", () => {
   while (boardArea.lastElementChild) {
@@ -39,8 +40,8 @@ gbtn.addEventListener("click", () => {
       input.id = `${i}${j}`;
       input.type = "number";
       input.min = "0";
-      // input.value = y;
-      input.value = `${i}${j}`;
+      input.value = y;
+      // input.value = `${i}${j}`;
       if (i === row) {
         input.disabled = true;
         input.className =
@@ -77,29 +78,42 @@ async function visualizer() {
       //   I[i + 1 > +rowInp.value - 1 ? i : i + 1][
       //     j + 1 > +columnInp.value - 1 ? j : j + 1
       //   ];
-      await delay(1000);
-      cell.classList.add("bg-blue-300");
-      leftCell.classList.add("bg-pink-300");
-      rightCell.classList.add("bg-pink-300");
-      downCell.classList.add("bg-pink-300");
-      await delay(1000);
+      await delay(700);
+      cell.classList.add("bg-cyan-300");
+      leftCell.classList.add("bg-purple-300");
+      rightCell.classList.add("bg-purple-300");
+      downCell.classList.add("bg-purple-300");
+      await delay(700);
       let cellValue = parseInt(cell.value);
-      cellValue += findLowestNumber(
+      cellValue += findLowestnumber(
         +leftCell.value,
         +downCell.value,
         +rightCell.value
       );
       cell.value = cellValue;
-      leftCell.classList.remove("bg-pink-300");
-      rightCell.classList.remove("bg-pink-300");
-      downCell.classList.remove("bg-pink-300");
-      cell.classList.remove("bg-blue-300");
+      leftCell.classList.remove("bg-purple-300");
+      rightCell.classList.remove("bg-purple-300");
+      downCell.classList.remove("bg-purple-300");
+      cell.classList.remove("bg-cyan-300");
       cell.classList.remove("text-sm");
       cell.classList.add("text-xl");
     }
   }
-  for (let i = 0; i < +rowInp.value; i++) {
-    for (let j = 0; i < +columnInp.value; j++) {}
+  let [i1, j1] = findSmallestnumberIndex(I[0]);
+  while (i1 < +rowInp.value) {
+    while (T.length > 0) {
+      T.pop();
+    }
+    let leftCell = I[i1 + 1][j1 - 1 < 0 ? j1 : j1 - 1];
+    let downCell = I[i1 + 1][j1];
+    let rightCell = I[i1 + 1][j1 + 1 > +columnInp.value - 1 ? j1 : j1 + 1];
+
+    let fcell = I[i1++][j1];
+    T.push(leftCell, downCell, rightCell);
+    // console.log(T);
+    [i1, j1] = findSmallestnumberIndex([...T]);
+    console.log(fcell);
+    fcell.classList.add("bg-yellow-400");
   }
 }
 
@@ -107,7 +121,10 @@ vbtn.addEventListener("click", () => {
   visualizer();
 });
 
-function findLowestNumber(num1, num2, num3) {
+function findLowestnumber(num1, num2, num3) {
+  // console.log("num 1" + num1);
+  // console.log("num 2" + num2);
+  // console.log("num 3" + num3);
   if (num1 <= num2 && num1 <= num3) {
     return num1;
   } else if (num2 <= num1 && num2 <= num3) {
@@ -116,8 +133,20 @@ function findLowestNumber(num1, num2, num3) {
     return num3;
   }
 }
+// function findLowestnumberIndex(cell1, cell2, cell3) {
+//   // console.log("num 1" + num1);
+//   // console.log("num 2" + num2);
+//   // console.log("num 3" + num3);
+//   if (+cell1.value <= +cell2.value && +cell1.value <= +cell3.value) {
+//     return stringToArray(cell1.id);
+//   } else if (+cell2.value <= +cell1.value && +cell2.value <= +cell3.value) {
+//     return stringToArray(cell2.id);
+//   } else {
+//     return stringToArray(cell3.id);
+//   }
+// }
 
-function findSmallestNumberIndex(arr) {
+function findSmallestnumberIndex(arr) {
   if (arr.length === 0) {
     // Handle the case where the array is empty.
     return undefined;
@@ -125,11 +154,35 @@ function findSmallestNumberIndex(arr) {
 
   let smallest = arr[0]; // Assume the first element is the smallest.
 
-  for (var i = 1; i < arr.length; i++) {
-    if (arr[i] < smallest) {
-      smallest = arr[i]; // Update the smallest if we find a smaller number.
+  for (let i = 0; i < arr.length; i++) {
+    if (+arr[i].value < +smallest.value) {
+      smallest = arr[i]; // Update the smallest if we find a smaller cellber.
     }
   }
 
-  return i - 1;
+  return stringToArray(smallest.id);
+}
+
+// function findCell(target, cell1, cell2, cell3) {
+//   findLowestnumber(+cell1.value,+cell2.value,+cell3.value)
+
+//   if (target === +cell1.value) {
+//     return stringToArray(cell1.id);
+//   } else if (target === +cell2.value) {
+//     return stringToArray(cell2.id);
+//   } else if (target === +cell3.value) {
+//     return stringToArray(cell3.id);
+//   } else {
+//     return [0, 0];
+//   }
+// }
+
+function stringToArray(inputString) {
+  const intArray = [];
+
+  for (let i = 0; i < inputString.length; i++) {
+    intArray.push(parseInt(inputString[i]));
+  }
+
+  return intArray;
 }
