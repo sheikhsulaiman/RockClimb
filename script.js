@@ -104,7 +104,15 @@ async function visualizer() {
     T.push(leftCell, downCell, rightCell);
     [i1, j1] = findSmallestnumberIndex([...T]);
     console.log(fcell);
+    await delay(400);
     fcell.classList.add("bg-yellow-400");
+    leftCell.classList.add("bg-purple-300");
+    rightCell.classList.add("bg-purple-300");
+    downCell.classList.add("bg-purple-300");
+    await delay(400);
+    leftCell.classList.remove("bg-purple-300");
+    rightCell.classList.remove("bg-purple-300");
+    downCell.classList.remove("bg-purple-300");
   }
 }
 
