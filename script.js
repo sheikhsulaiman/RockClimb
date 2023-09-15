@@ -3,13 +3,38 @@ const vbtn = document.getElementById("visualizeBoard");
 const rowInp = document.getElementById("row");
 const columnInp = document.getElementById("column");
 const boardArea = document.getElementById("boardArea");
+const switchDiv = document.getElementById("switch");
+const togglebtn = document.getElementById("switch-component");
 let I = [];
+let temp = [];
 let T = [];
+let A = [];
+
+togglebtn.addEventListener("change", function () {
+  if (togglebtn.checked) {
+    I.forEach((i1, i) => {
+      temp[i] = [];
+      I.forEach((j1, j) => {
+        const inp = I[i][j];
+        if (inp) {
+          temp[i].push(parseInt(inp.value));
+          inp.value = A[i][j];
+        }
+      });
+    });
+  } else {
+    I.forEach((i1, i) => {
+      I.forEach((j1, j) => {
+        if (I[i][j] && temp[i][j]) I[i][j].value = temp[i][j];
+      });
+    });
+  }
+});
+
 gbtn.addEventListener("click", () => {
   while (boardArea.lastElementChild) {
     boardArea.removeChild(boardArea.lastElementChild);
   }
-  let A = [];
 
   let row = +rowInp.value;
   let col = +columnInp.value;
@@ -103,7 +128,6 @@ async function visualizer() {
     let fcell = I[i1++][j1];
     T.push(leftCell, downCell, rightCell);
     [i1, j1] = findSmallestnumberIndex([...T]);
-    console.log(fcell);
     await delay(400);
     fcell.classList.add("bg-yellow-400");
     leftCell.classList.add("bg-purple-300");
@@ -114,6 +138,8 @@ async function visualizer() {
     rightCell.classList.remove("bg-purple-300");
     downCell.classList.remove("bg-purple-300");
   }
+  switchDiv.classList.remove("hidden");
+  switchDiv.classList.add("inline-flex");
 }
 
 vbtn.addEventListener("click", () => {
