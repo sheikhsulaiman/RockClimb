@@ -10,6 +10,7 @@ let I = [];
 let temp = [];
 let T = [];
 let A = [];
+let A1 = [];
 
 togglebtn.addEventListener("change", function () {
   if (togglebtn.checked) {
@@ -19,7 +20,7 @@ togglebtn.addEventListener("change", function () {
         const inp = I[i][j];
         if (inp) {
           temp[i].push(parseInt(inp.value));
-          inp.value = A[i][j];
+          inp.value = A1[i][j];
         }
       });
     });
@@ -144,6 +145,15 @@ async function visualizer() {
 }
 
 vbtn.addEventListener("click", () => {
+  I.forEach((i1, i) => {
+    A1[i] = [];
+    I.forEach((j1, j) => {
+      const inp = I[i][j];
+      if (inp) {
+        A1[i].push(parseInt(inp.value));
+      }
+    });
+  });
   visualizer();
 });
 
