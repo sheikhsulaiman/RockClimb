@@ -3,6 +3,7 @@ const gbtn = document.getElementById("generateBoard");
 const vbtn = document.getElementById("visualizeBoard");
 const rowInp = document.getElementById("row");
 const columnInp = document.getElementById("column");
+const time = document.getElementById("delay");
 const boardArea = document.getElementById("boardArea");
 const switchDiv = document.getElementById("switch");
 const togglebtn = document.getElementById("switch-component");
@@ -97,12 +98,12 @@ async function visualizer() {
       //   I[i + 1 > +rowInp.value - 1 ? i : i + 1][
       //     j + 1 > +columnInp.value - 1 ? j : j + 1
       //   ];
-      await delay(700);
-      cell.classList.add("bg-cyan-300");
-      leftCell.classList.add("bg-purple-300");
-      rightCell.classList.add("bg-purple-300");
-      downCell.classList.add("bg-purple-300");
-      await delay(700);
+      await delay(+time.value);
+      cell.classList.add("bg-blue-300");
+      leftCell.classList.add("bg-pink-200");
+      rightCell.classList.add("bg-pink-200");
+      downCell.classList.add("bg-pink-200");
+      await delay(+time.value);
       let cellValue = parseInt(cell.value);
       cellValue += findLowestnumber(
         +leftCell.value,
@@ -110,10 +111,10 @@ async function visualizer() {
         +rightCell.value
       );
       cell.value = cellValue;
-      leftCell.classList.remove("bg-purple-300");
-      rightCell.classList.remove("bg-purple-300");
-      downCell.classList.remove("bg-purple-300");
-      cell.classList.remove("bg-cyan-300");
+      leftCell.classList.remove("bg-pink-200");
+      rightCell.classList.remove("bg-pink-200");
+      downCell.classList.remove("bg-pink-200");
+      cell.classList.remove("bg-blue-300");
       cell.classList.remove("text-sm");
       cell.classList.add("text-xl");
     }
@@ -130,15 +131,15 @@ async function visualizer() {
     let fcell = I[i1++][j1];
     T.push(leftCell, downCell, rightCell);
     [i1, j1] = findSmallestnumberIndex([...T]);
-    await delay(400);
+    await delay(+time.value / 2);
     fcell.classList.add("bg-yellow-400");
-    leftCell.classList.add("bg-purple-300");
-    rightCell.classList.add("bg-purple-300");
-    downCell.classList.add("bg-purple-300");
-    await delay(400);
-    leftCell.classList.remove("bg-purple-300");
-    rightCell.classList.remove("bg-purple-300");
-    downCell.classList.remove("bg-purple-300");
+    leftCell.classList.add("bg-pink-200");
+    rightCell.classList.add("bg-pink-200");
+    downCell.classList.add("bg-pink-200");
+    await delay(+time.value / 2);
+    leftCell.classList.remove("bg-pink-200");
+    rightCell.classList.remove("bg-pink-200");
+    downCell.classList.remove("bg-pink-200");
   }
   switchDiv.classList.remove("hidden");
   switchDiv.classList.add("inline-flex");

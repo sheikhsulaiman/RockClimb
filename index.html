@@ -49,39 +49,61 @@
           </label>
         </div>
       </div>
+      <div class="mx-auto">
+        <div class="relative h-10 w-full min-w-fit">
+          <input
+            type="number"
+            min="0"
+            value="0"
+            class="peer h-full w-full rounded-[7px] border border-purple-400 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-purple-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-purple-400 placeholder-shown:border-t-purple-400 focus:border-2 focus:border-purple-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-purple-50"
+            placeholder=" "
+            id="delay"
+          />
+          <label
+            for="#delay"
+            class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-purple-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-purple-400 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-purple-400 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-purple-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-purple-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-purple-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-purple-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-purple-500"
+          >
+            Delay in Miliseconds
+          </label>
+        </div>
+      </div>
       <button
-        class="middle none center rounded-lg bg-purple-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-purple-900/20 transition-all hover:shadow-lg hover:shadow-purple-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        class="grow middle none center rounded-lg bg-purple-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-purple-900/20 transition-all hover:shadow-lg hover:shadow-purple-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
         data-ripple-light="true"
         id="generateBoard"
       >
         Generate Board
       </button>
-      <button
-        class="middle none center rounded-lg bg-purple-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-purple-900/20 transition-all hover:shadow-lg hover:shadow-purple-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-        data-ripple-light="true"
-        id="visualizeBoard"
-      >
-        visualize
-      </button>
-      <div
-        id="switch"
-        class="hidden items-center border-2 border-purple-500 px-4 rounded-xl"
-      >
-        <div class="relative inline-block h-4 w-8 cursor-pointer rounded-full">
-          <input
-            id="switch-component"
-            type="checkbox"
-            class="peer absolute h-4 w-8 cursor-pointer appearance-none rounded-full bg-white transition-colors duration-300 checked:bg-purple-500 peer-checked:border-purple-500 peer-checked:before:bg-purple-500"
-          />
-          <label
-            for="switch-component"
-            class="before:content[''] absolute top-2/4 -left-1 h-5 w-5 -translate-y-2/4 cursor-pointer rounded-full border border-blue-gray-100 bg-purple-300 shadow-md transition-all duration-300 before:absolute before:top-2/4 before:left-2/4 before:block before:h-10 before:w-10 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity hover:before:opacity-10 peer-checked:translate-x-full peer-checked:border-purple-500 peer-checked:before:bg-purple-500"
+      <div class="flex gap-2 justify-center">
+        <button
+          class="grow middle none center rounded-lg bg-purple-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-purple-900/20 transition-all hover:shadow-lg hover:shadow-purple-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          data-ripple-light="true"
+          id="visualizeBoard"
+        >
+          visualize
+        </button>
+        <div
+          id="switch"
+          class="hidden items-center border-2 border-purple-500 px-4 rounded-xl"
+        >
+          <div
+            class="relative inline-block h-4 w-8 cursor-pointer rounded-full"
           >
-            <div
-              class="top-2/4 left-2/4 inline-block -translate-x-2/4 -translate-y-2/4 rounded-full p-5"
-              data-ripple-dark="true"
-            ></div>
-          </label>
+            <input
+              id="switch-component"
+              type="checkbox"
+              class="peer absolute h-4 w-8 cursor-pointer appearance-none rounded-full bg-white transition-colors duration-300 checked:bg-purple-500 peer-checked:border-purple-500 peer-checked:before:bg-purple-500"
+            />
+            <label
+              for="switch-component"
+              class="before:content[''] absolute top-2/4 -left-1 h-5 w-5 -translate-y-2/4 cursor-pointer rounded-full border border-blue-gray-100 bg-purple-300 shadow-md transition-all duration-300 before:absolute before:top-2/4 before:left-2/4 before:block before:h-10 before:w-10 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity hover:before:opacity-10 peer-checked:translate-x-full peer-checked:border-purple-500 peer-checked:before:bg-purple-500"
+            >
+              <div
+                class="top-2/4 left-2/4 inline-block -translate-x-2/4 -translate-y-2/4 rounded-full p-5"
+                data-ripple-dark="true"
+              ></div>
+            </label>
+          </div>
         </div>
       </div>
     </div>
