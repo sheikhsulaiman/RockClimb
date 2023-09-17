@@ -99,10 +99,10 @@ async function visualizer() {
       //     j + 1 > +columnInp.value - 1 ? j : j + 1
       //   ];
       await delay(+time.value);
-      cell.classList.add("bg-blue-300");
-      leftCell.classList.add("bg-pink-200");
-      rightCell.classList.add("bg-pink-200");
-      downCell.classList.add("bg-pink-200");
+      cell.classList.add("bg-cyan-300");
+      leftCell.classList.add("bg-purple-200");
+      rightCell.classList.add("bg-purple-200");
+      downCell.classList.add("bg-purple-200");
       await delay(+time.value);
       let cellValue = parseInt(cell.value);
       cellValue += findLowestnumber(
@@ -111,10 +111,10 @@ async function visualizer() {
         +rightCell.value
       );
       cell.value = cellValue;
-      leftCell.classList.remove("bg-pink-200");
-      rightCell.classList.remove("bg-pink-200");
-      downCell.classList.remove("bg-pink-200");
-      cell.classList.remove("bg-blue-300");
+      leftCell.classList.remove("bg-purple-200");
+      rightCell.classList.remove("bg-purple-200");
+      downCell.classList.remove("bg-purple-200");
+      cell.classList.remove("bg-cyan-300");
       cell.classList.remove("text-sm");
       cell.classList.add("text-xl");
     }
@@ -133,13 +133,13 @@ async function visualizer() {
     [i1, j1] = findSmallestnumberIndex([...T]);
     await delay(+time.value / 2);
     fcell.classList.add("bg-yellow-400");
-    leftCell.classList.add("bg-pink-200");
-    rightCell.classList.add("bg-pink-200");
-    downCell.classList.add("bg-pink-200");
+    leftCell.classList.add("bg-purple-200");
+    rightCell.classList.add("bg-purple-200");
+    downCell.classList.add("bg-purple-200");
     await delay(+time.value / 2);
-    leftCell.classList.remove("bg-pink-200");
-    rightCell.classList.remove("bg-pink-200");
-    downCell.classList.remove("bg-pink-200");
+    leftCell.classList.remove("bg-purple-200");
+    rightCell.classList.remove("bg-purple-200");
+    downCell.classList.remove("bg-purple-200");
   }
   switchDiv.classList.remove("hidden");
   switchDiv.classList.add("inline-flex");
