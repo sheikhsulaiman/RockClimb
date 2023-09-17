@@ -1,4 +1,4 @@
-//v1.1
+//v1.2
 const gbtn = document.getElementById("generateBoard");
 const vbtn = document.getElementById("visualizeBoard");
 const rowInp = document.getElementById("row");
