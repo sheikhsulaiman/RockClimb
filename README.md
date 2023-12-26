@@ -17,9 +17,14 @@ Rock Climb Visualizer is a web application designed to help users visualize and 
 - Tailwind CSS
 - JavaScript
 
+## Live Demo
+
+Check out the live demo [here](https://sheikhsulaiman.github.io/RockClimbVisualizer/).
+
 ## How to Use
 
 1. Clone the repository:
 
    ```bash
    git clone https://github.com/sheikhsulaiman/RockClimbVisualizer.git
+   ```
